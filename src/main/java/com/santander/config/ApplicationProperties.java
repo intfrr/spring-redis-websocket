@@ -1,4 +1,4 @@
-package com.github.rawsanj.config;
+package com.santander.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

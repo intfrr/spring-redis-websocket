@@ -1,8 +1,9 @@
-package com.github.rawsanj.listener;
+package com.santander.listener;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.rawsanj.model.ChatMessage;
-import com.github.rawsanj.service.WebSocketMessageService;
+import com.santander.model.ChatMessage;
+import com.santander.service.WebSocketMessageService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

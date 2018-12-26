@@ -1,7 +1,8 @@
-package com.github.rawsanj.config;
+package com.santander.config;
 
-import com.github.rawsanj.listener.RedisReceiver;
-import com.github.rawsanj.service.WebSocketMessageService;
+import com.santander.listener.RedisReceiver;
+import com.santander.service.WebSocketMessageService;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

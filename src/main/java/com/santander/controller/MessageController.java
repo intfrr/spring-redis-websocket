@@ -1,9 +1,10 @@
-package com.github.rawsanj.controller;
+package com.santander.controller;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.rawsanj.model.ChatMessage;
+import com.santander.model.ChatMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;

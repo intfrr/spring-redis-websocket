@@ -1,7 +1,8 @@
-package com.github.rawsanj.service;
+package com.santander.service;
 
-import com.github.rawsanj.config.ApplicationProperties;
-import com.github.rawsanj.model.ChatMessage;
+import com.santander.config.ApplicationProperties;
+import com.santander.model.ChatMessage;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.simp.SimpMessagingTemplate;

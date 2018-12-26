@@ -1,4 +1,4 @@
-package com.github.rawsanj.config;
+package com.santander.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
