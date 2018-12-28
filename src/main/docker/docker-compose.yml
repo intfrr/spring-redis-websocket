@@ -15,21 +15,21 @@ services:
         ports:
             - "6379:6379"
     spring-chat-1:
-        image: intfrr/spring-redis-websocket
+        image: intfrr/spring-redis-websocket:0.0
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword
         ports:
             - "8080"
     spring-chat-2:
-        image: intfrr/spring-redis-websocket
+        image: intfrr/spring-redis-websocket:0.0
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword
         ports:
             - "8080"
     spring-chat-3:
-        image: intfrr/spring-redis-websocket
+        image: intfrr/spring-redis-websocket:0.0
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword

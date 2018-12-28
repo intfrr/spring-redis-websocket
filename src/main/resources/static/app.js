@@ -27,7 +27,7 @@ $( document ).ready(function() {
             setConnected(true);
             console.log('Connected: ' + frame);
             stompClient.subscribe('/topic/messages', function (chatMessage) {
-                console.log("Message: ", chatMessage);
+                // console.log("Message: ", chatMessage);
                 showChatMessage(JSON.parse(chatMessage.body));
             });
             stompClient.subscribe('/topic/count', function (totalCount) {
