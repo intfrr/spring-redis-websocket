@@ -26,7 +26,7 @@ public class RedisReceiver {
         ChatMessage chatMessage = objectMapper.readValue(message, ChatMessage.class);
 
         LOGGER.info("Notification Message Received: " + chatMessage);
-        webSocketMessageService.sendChatMessage(chatMessage);
+        webSocketMessageService.sendChatMessage(chatMessage, "UserA");
 
     }
 
@@ -34,7 +34,7 @@ public class RedisReceiver {
     public void receiveCountMessage(String totalMessageCount) {
 
         LOGGER.info("Count Message Received :" + totalMessageCount);
-        webSocketMessageService.sendMessageCount(Integer.parseInt(totalMessageCount));
+        webSocketMessageService.sendMessageCount(Integer.parseInt(totalMessageCount), "UserA");
 
     }
 }
