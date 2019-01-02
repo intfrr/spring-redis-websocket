@@ -26,14 +26,16 @@ public class WebSocketMessageService {
 //    public void sendChatMessage(ChatMessage message) {
 	public void sendChatMessage(ChatMessage message, String username) {
 //		template.convertAndSend(applicationProperties.getTopic().getMessage(), message);
-		template.convertAndSendToUser(username, applicationProperties.getTopic().getMessage(), message);		
+//		template.convertAndSendToUser(username, applicationProperties.getTopic().getMessage(), message);
+		template.convertAndSendToUser(username, "/queue/notify", message);
 	}
 
 	@Async
 //	public void sendMessageCount(Integer totalMessage) {
 	public void sendMessageCount(Integer totalMessage, String username) {
 		LOG.info("Total Messages: {}", totalMessage);
-		template.convertAndSendToUser(username, applicationProperties.getTopic().getCount(), totalMessage);
+//		template.convertAndSendToUser(username, applicationProperties.getTopic().getCount(), totalMessage);
+		template.convertAndSend(applicationProperties.getTopic().getCount(), totalMessage);
 	}
 
 }
