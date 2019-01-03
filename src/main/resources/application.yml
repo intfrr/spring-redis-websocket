@@ -1,0 +1,14 @@
+raw:
+  topic:
+    count: /topic/count
+    message: /topic/messages
+spring:
+  mvc:
+    favicon:
+      enabled: false
+  redis:
+    host: localhost
+    password: SuperSecretRedisPassword
+    port: 6379
+  session:
+    store-type: redis

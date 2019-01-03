@@ -1,4 +1,4 @@
-package com.github.rawsanj.model;
+package com.santander.model;
 
 public class ChatMessage {
 
