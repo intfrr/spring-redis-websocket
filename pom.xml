@@ -1,141 +1,229 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.github.rawsanj</groupId>
-  <artifactId>spring-redis-websocket</artifactId>
-  <version>0.1.0</version>
-  <packaging>jar</packaging>
+	<groupId>com.santander</groupId>
+	<artifactId>spring-redis-websocket</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-  <name>spring-redis-websocket</name>
-  <description>Spring Boot Project for WebSocket Notification using Redis Pub/Sub</description>
+	<name>spring-redis-websocket</name>
+	<description>Spring Boot Project for WebSocket Notification using Redis Pub/Sub</description>
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.9.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
-  </parent>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
-    <spring.cloud.version>Edgware.RELEASE</spring.cloud.version>
-    <spotify.docker.version>1.0.0</spotify.docker.version>
-    <registry.image.name>rawsanj/spring-redis-websocket</registry.image.name>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring.cloud.version>Edgware.RELEASE</spring.cloud.version>
+		<spotify.docker.version>1.0.0</spotify.docker.version>
+		<!-- <registry.image.name>intfrr/spring-redis-websocket</registry.image.name> -->
+		<dockerfile-maven-plugin.version>1.4.9</dockerfile-maven-plugin.version>
+		<docker.image.prefix>intfrr</docker.image.prefix>
+		<docker.image.version>0.0.1</docker.image.version>
+	</properties>
 
-  <dependencies>
+	<dependencies>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-      <version>1.5.10.RELEASE</version>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<version>1.5.10.RELEASE</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 
-    <!--Dependencies for WebSocket -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-websocket</artifactId>
-    </dependency>
+		<!--Dependencies for WebSocket -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>webjars-locator</artifactId>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>sockjs-client</artifactId>
-      <version>1.0.2</version>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.0.2</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>stomp-websocket</artifactId>
-      <version>2.3.3</version>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.3</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>3.1.0</version>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
-    </dependency>
+		<dependency>
+			<groupId>com.spotify</groupId>
+			<artifactId>dockerfile-maven-plugin</artifactId>
+			<version>1.4.9</version>
+		</dependency>
 
-  </dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
 
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>${spring.cloud.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-  <build>
-    <plugins>
+	<build>
+		<plugins>
 
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 
-      <plugin>
-        <groupId>com.spotify</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>${spotify.docker.version}</version>
-        <configuration>
-          <imageName>${registry.image.name}</imageName>
-          <dockerDirectory>src/main/docker</dockerDirectory>
-          <resources>
-            <resource>
-              <targetPath>/</targetPath>
-              <directory>${project.build.directory}</directory>
-              <include>${project.build.finalName}.jar</include>
-            </resource>
-          </resources>
-          <imageTags>
-            <imageTag>${project.version}</imageTag>
-            <imageTag>latest</imageTag>
-          </imageTags>
-        </configuration>
-        <executions>
-          <execution>
-            <id>docker-build-and-push</id>
-            <goals>
-              <goal>build</goal>
-              <goal>push</goal>
-            </goals>
-            <phase>install</phase>
-          </execution>
-        </executions>
-      </plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>com.spotify</groupId> -->
+			<!-- <artifactId>docker-maven-plugin</artifactId> -->
+			<!-- <version>${spotify.docker.version}</version> -->
+			<!-- <configuration> -->
+			<!-- <imageName>${registry.image.name}</imageName> -->
+			<!-- <dockerDirectory>src/main/docker</dockerDirectory> -->
+			<!-- <resources> -->
+			<!-- <resource> -->
+			<!-- <targetPath>/</targetPath> -->
+			<!-- <directory>${project.build.directory}</directory> -->
+			<!-- <include>${project.build.finalName}.jar</include> -->
+			<!-- </resource> -->
+			<!-- </resources> -->
+			<!-- <imageTags> -->
+			<!-- <imageTag>${project.version}</imageTag> -->
+			<!-- <imageTag>latest</imageTag> -->
+			<!-- </imageTags> -->
+			<!-- </configuration> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>docker-build-and-push</id> -->
+			<!-- <goals> -->
+			<!-- <goal>build</goal> -->
+			<!-- <goal>push</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>install</phase> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>${dockerfile-maven-plugin.version}</version>
 
-    </plugins>
-  </build>
+				<!-- <groupId>com.spotify</groupId> -->
+				<!-- <artifactId>dockerfile-maven-plugin</artifactId> -->
+				<!-- <version>1.4.9</version> -->
+
+				<!-- Wire up to the default build phases -->
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<!-- <goal>tag</goal> -->
+							<goal>build</goal>
+							<goal>push</goal>
+						</goals>
+						<!-- <configuration> -->
+						<!-- <tag>${build.number}</tag> -->
+						<!-- </configuration> -->
+					</execution>
+					<!-- <execution> -->
+					<!-- <id>default-2</id> -->
+					<!-- <goals> -->
+					<!-- <goal>tag</goal> -->
+					<!-- <goal>push</goal> -->
+					<!-- </goals> -->
+					<!-- <configuration> -->
+					<!-- <tag>latest</tag> -->
+					<!-- </configuration> -->
+					<!-- </execution> -->
+					<execution>
+						<id>tag-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>tag</goal>
+						</goals>
+						<configuration>
+							<image>${docker.image.prefix}/${project.artifactId}:${project.version}</image>
+							<!-- <newName>registry.example.com/my-image:${project.version}</newName> -->
+							<newName>${docker.image.prefix}/${project.artifactId}:${project.version}</newName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>push-image</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>push</goal>
+						</goals>
+						<configuration>
+							<!-- <imageName>registry.example.com/my-image:${project.version}</imageName> -->
+							<imageName>${docker.image.prefix}/${project.artifactId}:${project.version}</imageName>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>${docker.image.prefix}/${project.artifactId}</repository>
+					<!-- <tag>${project.version}.${git-revision}</tag> -->
+					<tag>${project.version}</tag>
+					<!-- <imageTags> -->
+					<!-- <imageTag>${project.version}</imageTag> -->
+					<!-- <imageTag>latest</imageTag> -->
+					<!-- </imageTags> -->
+					<buildArgs>
+						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+					</buildArgs>
+					<useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+				</configuration>
+				<dependencies>
+					<!-- To make this work on JDK 9+ -->
+					<dependency>
+						<groupId>javax.activation</groupId>
+						<artifactId>javax.activation-api</artifactId>
+						<version>1.2.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
 
 </project>
