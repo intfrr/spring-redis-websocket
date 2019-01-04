@@ -1,4 +1,5 @@
 FROM openjdk:8-jre-alpine
+MAINTAINER Nadir Palacios <inpalacios@santander.com.mx>
 VOLUME /tmp
 ARG JAR_FILE
 ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:+UseSerialGC"

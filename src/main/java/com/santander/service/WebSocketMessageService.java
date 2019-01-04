@@ -12,30 +12,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class WebSocketMessageService {
 
-	private final ApplicationProperties applicationProperties;
-	private final SimpMessagingTemplate template;
+    private final ApplicationProperties applicationProperties;
+    private final SimpMessagingTemplate template;
 
-	private static final Logger LOG = LoggerFactory.getLogger(WebSocketMessageService.class);
 
-	public WebSocketMessageService(ApplicationProperties applicationProperties, SimpMessagingTemplate template) {
-		this.applicationProperties = applicationProperties;
-		this.template = template;
-	}
+    private static final Logger LOG = LoggerFactory.getLogger(WebSocketMessageService.class);
 
-	@Async
-//    public void sendChatMessage(ChatMessage message) {
-	public void sendChatMessage(ChatMessage message, String username) {
-//		template.convertAndSend(applicationProperties.getTopic().getMessage(), message);
-//		template.convertAndSendToUser(username, applicationProperties.getTopic().getMessage(), message);
-		template.convertAndSendToUser(username, "/queue/notify", message);
-	}
+    public WebSocketMessageService(ApplicationProperties applicationProperties, SimpMessagingTemplate template) {
+        this.applicationProperties = applicationProperties;
+        this.template = template;
+    }
 
-	@Async
-//	public void sendMessageCount(Integer totalMessage) {
-	public void sendMessageCount(Integer totalMessage, String username) {
-		LOG.info("Total Messages: {}", totalMessage);
-//		template.convertAndSendToUser(username, applicationProperties.getTopic().getCount(), totalMessage);
-		template.convertAndSend(applicationProperties.getTopic().getCount(), totalMessage);
-	}
+    @Async
+    public void sendChatMessage(ChatMessage message) {
+        template.convertAndSend(applicationProperties.getTopic().getMessage(), message);
+    }
+
+    @Async
+    public void sendMessageCount(Integer totalMessage) {
+        LOG.info("Total Messages: {}", totalMessage);
+        template.convertAndSend(applicationProperties.getTopic().getCount(), totalMessage);
+    }
 
 }
