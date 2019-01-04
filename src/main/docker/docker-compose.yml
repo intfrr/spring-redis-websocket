@@ -1,7 +1,7 @@
 version: '3.2'
 services:
     nginx:
-        image: rawsanj/nginx-lb
+        image: "rawsanj/nginx-lb:${TAG_LATEST}"
         ports:
             - "80:80"
         depends_on:
@@ -9,27 +9,27 @@ services:
             - spring-chat-2
             - spring-chat-3
     redis:
-        image: bitnami/redis
+        image: "bitnami/redis:${TAG_LATEST}"
         environment:
             - REDIS_PASSWORD=SuperSecretRedisPassword
         ports:
             - "6379:6379"
     spring-chat-1:
-        image: rawsanj/spring-redis-websocket
+        image: "intfrr/spring-redis-websocket:${TAG}"
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword
         ports:
             - "8080"
     spring-chat-2:
-        image: rawsanj/spring-redis-websocket
+        image: "intfrr/spring-redis-websocket:${TAG}"
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword
         ports:
             - "8080"
     spring-chat-3:
-        image: rawsanj/spring-redis-websocket
+        image: "intfrr/spring-redis-websocket:${TAG}"
         environment:
             - SPRING_REDIS_HOST=redis
             - SPRING_REDIS_PASSWORD=SuperSecretRedisPassword
